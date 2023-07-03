@@ -1,0 +1,40 @@
+package NoGuess;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class NoGuessGame{
+    public int number;
+    public int input_a_Number;
+    public int no_of_Guesses = 0;
+
+    public int getNoOfGuesses() {
+        return no_of_Guesses;
+    }
+    public void setNoOfGuesses(int no_of_Guesses) {
+        this.no_of_Guesses = no_of_Guesses;
+    }
+    NoGuessGame(){
+        Random rand = new Random();
+        this.number = rand.nextInt(10);
+    }
+    void takeUserInput(){
+        System.out.println("Guess the number");
+        Scanner sc = new Scanner(System.in);
+        input_a_Number = sc.nextInt();
+    }
+    boolean isCorrectNumber(){
+        no_of_Guesses++;
+        if(input_a_Number==number){
+            System.out.format("Yes It is right, it was %d\nYou guessed it in %d attempts", number, no_of_Guesses);
+            return true;
+        }
+        else if(input_a_Number<number){
+            System.out.println("your guess number is less");
+        }
+        else {
+            System.out.println("your guess number is high");
+        }
+        return false;
+    }
+}
